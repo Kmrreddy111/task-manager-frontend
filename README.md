@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# Task Manager Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the **frontend** for the Task Manager application, built using **React.js**. It provides a user-friendly interface for managing tasks, user authentication, and interacting with the backend API.
 
-## Available Scripts
+## Features
+- **User Authentication** (Register, Login, Logout)
+- **Task Management** (Add, Edit, Delete, Mark Complete)
+- **Responsive UI** (Optimized for desktop & mobile)
+- **State Management** (Using React Hooks )
+- **API Integration** (Connects with the backend for data persistence)
+- **Material UI Integration** (For modern and accessible UI components)
 
-In the project directory, you can run:
+## Technologies Used
+- React.js
+- React Router
+- Axios (for API requests)
+- Material UI (for styling and components)
 
-### `npm start`
+## Project Structure
+```
+src/
+├── components/        # Reusable UI components (Navbar, TaskAdder, etc.)
+├── pages/            # Page components (Dashboard, Login, Register, etc.)
+├── api.js            # API calls for local and from render
+├── App.js            # Main application component
+├── index.js          # Entry point
+├── styles/           # Global styles (CSS/Tailwind)
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation & Setup
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Prerequisites
+Make sure you have **Node.js** and **npm** installed on your system.
 
-### `npm test`
+### Steps
+1. **Clone the repository**
+   ```sh
+   git clone https://github.com/your-username/task-manager-frontend.git
+   cd task-manager-frontend
+   ```
+2. **Install dependencies**
+   ```sh
+   npm install
+   ```
+3. **Create an environment file** (`.env` in the root directory)
+   ```env
+   REACT_APP_API_URL=http://localhost:5000/api
+   ```
+4. **Start the development server**
+   ```sh
+   npm start
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## API Configuration
+This frontend interacts with a backend API. Ensure that the backend is running at the URL specified in `.env`.
 
-### `npm run build`
+## Deployment
+To build the production-ready version:
+```sh
+npm run build
+```
+This generates a `build/` folder that can be deployed to any static hosting service like **Vercel, Netlify, or GitHub Pages**.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Troubleshooting
+- If you face **CORS issues**, ensure that the backend has proper CORS headers enabled.
+- Check the `.env` file for the correct API URL.
+- Run `npm audit fix` if there are dependency vulnerabilities.
+- Ensure that **Material UI** dependencies are correctly installed and imported.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Contributing
+Feel free to fork the repository and submit pull requests!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## License
+This project is licensed under the **MIT License**.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+🚀 Happy Coding! 🎯
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
