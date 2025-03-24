@@ -1,8 +1,8 @@
 .dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
-  
-  
-
 }
 
 .add-task-container {
@@ -44,9 +44,6 @@
 .delete-task-button:hover {
   background-color: darkred;
 }
-.dashboard-container {
-  padding: 20px;
-}
 
 .delete-dialog .MuiDialog-paper {
   margin: auto;
@@ -60,77 +57,12 @@
 
 .MuiAccordionSummary-content {
   font-weight: bold;
-}
-.dashboard-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding: 20px;
-}
-
-.dashboard-block {
-  max-width: 600px;
-  width: 90%;
-}
-
-.add-task-block {
-  display: flex;
-  flex-direction: row;
-  justify-content: end;
-  margin-bottom: 20px;
-}
-
-.delete-dialog .MuiDialog-paper {
-  margin: auto;
-  max-width: 400px;
-  text-align: center;
-}
-
-.MuiAccordion-root {
-  margin-bottom: 10px;
-}
-
-.MuiAccordionSummary-content {
-  font-weight: bold;
-}
-
-.typography-title{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100% !important; 
-}
-
-
-.dashboard-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-}
-
-.dashboard-block {
-  max-width: 600px;
-  width: 90%;
-}
-
-.add-task-block {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 20px;
 }
 
 .typography-title {
   display: flex;
   justify-content: space-between;
   width: 100%;
-}
-.dashboard-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
 }
 
 .task-metrics {
@@ -167,4 +99,8 @@
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 20px;
+}
+
+.line-through {
+  text-decoration: line-through;
 }

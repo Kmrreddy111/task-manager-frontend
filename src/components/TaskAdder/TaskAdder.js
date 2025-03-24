@@ -127,6 +127,11 @@ const TaskAdder = ({ open, handleClose, taskToEdit, refreshTasks }) => {
               value={formData.title}
               onChange={handleChange}
               required
+              InputProps={{
+                style: {
+                  textDecoration: formData.status === "completed" ? "line-through" : "none", // Apply line-through if completed
+                },
+              }}
             />
             <TextField
               margin="dense"
@@ -167,12 +172,15 @@ const TaskAdder = ({ open, handleClose, taskToEdit, refreshTasks }) => {
             </TextField>
             <TextField
               margin="dense"
-              label="Category"
+              label="category"
               select
               fullWidth
               name="category"
               value={formData.category}
               onChange={handleChange}
+              required
+              
+
             >
               {categories.map((category) => (
                 <MenuItem key={category._id} value={category._id}>

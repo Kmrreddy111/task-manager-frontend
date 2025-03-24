@@ -9,7 +9,6 @@ import { apiUrl } from "../../api";
 
 function Login() {
   const [formData, setFormData] = useState({ email: "", password: "" });
-  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   // Handle input changes
@@ -24,7 +23,6 @@ function Login() {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(""); // Clear previous errors
 
     try {
       // Make a POST request to the backend login route
@@ -36,7 +34,7 @@ function Login() {
       // Redirect to the dashboard
       navigate("/dashboard");
     } catch (error) {
-      setError(error.response?.data?.message || "Login failed. Please try again.");
+      alert(error.response?.data?.message || "Login failed. Please try again.");
     }
   };
 
@@ -55,6 +53,7 @@ function Login() {
               value={formData.email}
               onChange={handleChange} // Update formData state
               required
+              sx={{ width: "80%" }} // Set width
             />
           </div>
           <div className="center-line">
@@ -67,10 +66,10 @@ function Login() {
               value={formData.password}
               onChange={handleChange} // Update formData state
               required
+              sx={{ width: "80%" }} 
             />
           </div>
 
-          {error && <p className="error-message">{error}</p>} {/* Display error message */}
 
           <div className="center-line">
             <Button className="auth-button" variant="contained" color="success" type="submit">

@@ -31,7 +31,6 @@ function Dashboard() {
   const [taskToDelete, setTaskToDelete] = useState(null); // Track task to delete
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false); // Track delete confirmation dialog
   const [filterType, setFilterType] = useState("all");
-  
 
   // Fetch tasks from the backend
   const fetchTasks = async () => {
@@ -121,12 +120,9 @@ function Dashboard() {
   // Confirm and delete the task
   const confirmDeleteTask = async () => {
     try {
-      await axios.delete(
-        `${apiUrl}/api/tasks/${taskToDelete._id}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      await axios.delete(`${apiUrl}/api/tasks/${taskToDelete._id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       setTasks(tasks.filter((task) => task._id !== taskToDelete._id)); // Remove the task from the list
       setFilteredTasks(
         filteredTasks.filter((task) => task._id !== taskToDelete._id)
@@ -149,7 +145,7 @@ function Dashboard() {
   // Function to format the due date
   const formatDueDate = (dueDate) => {
     if (!dueDate) return "No Due Date";
-    return dueDate // Extract only the date part (YYYY-MM-DD)
+    return dueDate; // Extract only the date part (YYYY-MM-DD)
   };
 
   // Function to determine due date color
@@ -206,14 +202,14 @@ function Dashboard() {
         <div className="task-metrics">
           <Card className="task-card" onClick={() => handleCardClick("all")}>
             <CardContent>
-              <Typography variant="h6">Total Tasks</Typography>
-              <Typography variant="h4">{totalTasks}</Typography>
+              <Typography variant="p">Total Tasks</Typography>
+              <Typography variant="h5">{totalTasks}</Typography>
             </CardContent>
           </Card>
           <Card className="task-card" onClick={() => handleCardClick("active")}>
             <CardContent>
-              <Typography variant="h6">Active Tasks</Typography>
-              <Typography variant="h4">{activeTasks}</Typography>
+              <Typography variant="p">Active Tasks</Typography>
+              <Typography variant="h5">{activeTasks}</Typography>
             </CardContent>
           </Card>
           <Card
@@ -221,12 +217,12 @@ function Dashboard() {
             onClick={() => handleCardClick("finished")}
           >
             <CardContent>
-              <Typography variant="h6">Finished Tasks</Typography>
-              <Typography variant="h4">{finishedTasks}</Typography>
+              <Typography variant="p">Finished Tasks</Typography>
+              <Typography variant="h5">{finishedTasks}</Typography>
             </CardContent>
           </Card>
         </div>
-        
+
         <div className="add-task-block">
           <TextField
             label="Search Tasks"
@@ -265,7 +261,15 @@ function Dashboard() {
                 id={`panel-${task._id}-header`}
               >
                 <div className="typography-title">
-                  <Typography component="span">{task.title} </Typography>
+                  <Typography
+                    component="span"
+                    style={{
+                      textDecoration:
+                        task.status === "completed" ? "line-through" : "none", // Strike-through if completed
+                    }}
+                  >
+                    {task.title}{" "}
+                  </Typography>
                   <Typography
                     component="span"
                     style={{ color: getDueDateColor(task.dueDate) }}

@@ -71,6 +71,8 @@ function Register() {
               name="name"
               value={formData.name}
               onChange={handleChange}
+              sx={{ width: "80%" }} 
+
             />
           </div>
 
@@ -84,6 +86,7 @@ function Register() {
               name="email"
               value={formData.email}
               onChange={handleChange}
+              sx={{ width: "80%" }}
             />
           </div>
 
@@ -97,6 +100,7 @@ function Register() {
               name="password"
               value={formData.password}
               onChange={handleChange}
+              sx={{ width: "80%" }} 
             />
           </div>
 
@@ -110,6 +114,7 @@ function Register() {
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
+              sx={{ width: "80%" }}
             />
           </div>
 
