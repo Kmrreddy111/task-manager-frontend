@@ -62,35 +62,46 @@ function Dashboard() {
     fetchCategories();
   }, []);
 
+  // Unified filter function
+  const filterTasks = (query = "", category = "", type = "all") => {
+    let filtered = tasks;
+
+    // Filter by task type (active, finished, or all)
+    if (type === "active") {
+      filtered = filtered.filter(
+        (task) => task.status === "pending" || task.status === "in-progress"
+      );
+    } else if (type === "finished") {
+      filtered = filtered.filter((task) => task.status === "completed");
+    }
+
+    // Filter by search query
+    if (query) {
+      filtered = filtered.filter((task) =>
+        task.title.toLowerCase().includes(query.toLowerCase())
+      );
+    }
+
+    // Filter by category
+    if (category) {
+      filtered = filtered.filter((task) => task.category === category);
+    }
+
+    setFilteredTasks(filtered);
+  };
+
   // Handle search input change
   const handleSearchChange = (e) => {
     const query = e.target.value.toLowerCase();
     setSearchQuery(query);
-    filterTasks(query, selectedCategory);
+    filterTasks(query, selectedCategory, filterType);
   };
 
   // Handle category selection change
   const handleCategoryChange = (e) => {
     const category = e.target.value;
     setSelectedCategory(category);
-    filterTasks(searchQuery, category);
-  };
-
-  // Filter tasks based on search query and selected category
-  const filterTasks = (query, category) => {
-    let filtered = tasks;
-
-    if (query) {
-      filtered = filtered.filter((task) =>
-        task.title.toLowerCase().includes(query)
-      );
-    }
-
-    if (category) {
-      filtered = filtered.filter((task) => task.category === category);
-    }
-
-    setFilteredTasks(filtered);
+    filterTasks(searchQuery, category, filterType);
   };
 
   // Open dialog for adding a new task
@@ -163,41 +174,15 @@ function Dashboard() {
     }
   };
 
-  // Update the filterTasks function to include filterType
-  const filterTask = (query, category, type = filterType) => {
-    let filtered = tasks;
-
-    if (type === "active") {
-      filtered = filtered.filter(
-        (task) => task.status === "pending" || task.status === "in-progress"
-      );
-    } else if (type === "finished") {
-      filtered = filtered.filter((task) => task.status === "completed");
-    }
-
-    if (query) {
-      filtered = filtered.filter((task) =>
-        task.title.toLowerCase().includes(query)
-      );
-    }
-
-    if (category) {
-      filtered = filtered.filter((task) => task.category === category);
-    }
-
-    setFilteredTasks(filtered);
-  };
-
-  // Add a function to handle card clicks
+  // Handle card clicks for filtering by type
   const handleCardClick = (type) => {
     setFilterType(type);
-    filterTask(searchQuery, selectedCategory, type);
+    filterTasks(searchQuery, selectedCategory, type);
   };
 
   return (
     <div className="dashboard-container">
       {/* Task Metrics Cards */}
-
       <div className="dashboard-block">
         <div className="task-metrics">
           <Card className="task-card" onClick={() => handleCardClick("all")}>
